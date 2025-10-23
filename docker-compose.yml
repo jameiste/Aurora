@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  aurora:
+    build: .
+    container_name: aurora-alert
+    env_file: .env
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; print('ok')"]
+      interval: 5m
+      timeout: 10s
+      retries: 3

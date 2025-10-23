@@ -1,0 +1,5 @@
+# Requierements
+numpy==2.3.4
+pandas==2.3.3
+python-dotenv==1.1.1
+Requests==2.32.5

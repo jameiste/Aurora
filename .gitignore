@@ -1,0 +1,107 @@
+# -------------------------------------------------------------------
+# By ChatGPT
+# -------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.so
+*.egg
+*.egg-info/
+*.manifest
+*.spec
+dist/
+build/
+.eggs/
+wheels/
+pip-wheel-metadata/
+
+# Virtual environments
+.env/
+.venv/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Byte-compiled / caches
+__pycache__/
+.ipynb_checkpoints/
+
+# -------------------------------------------------------------------
+# ENVIRONMENT / CONFIG
+# -------------------------------------------------------------------
+# Local environment variables (API keys, tokens, secrets)
+.env
+.env.*
+!env.template        # optional: keep a safe template file
+
+# Local Python settings
+*.local
+*.dat
+*.pkl
+*.csv
+*.log
+*.sqlite3
+
+# -------------------------------------------------------------------
+# VISUAL STUDIO CODE
+# -------------------------------------------------------------------
+.vscode/
+.history/
+.code-workspace
+
+# -------------------------------------------------------------------
+# SYSTEM FILES
+# -------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# -------------------------------------------------------------------
+# DOCKER
+# -------------------------------------------------------------------
+# Docker build artifacts
+*.tar
+*.bak
+*.old
+*.pid
+*.seed
+*.pid.lock
+# Docker compose local override
+docker-compose.override.yml
+
+# -------------------------------------------------------------------
+# OTHER TOOLS
+# -------------------------------------------------------------------
+# macOS / OS artifacts
+.AppleDouble
+.LSOverride
+
+# Logs
+logs/
+*.log
+
+# -------------------------------------------------------------------
+# PROJECT SPECIFIC
+# -------------------------------------------------------------------
+# Cache, temp data, saved downloads
+cache/
+tmp/
+temp/
+data/
+output/
+__results__/
+
+# -------------------------------------------------------------------
+# JUPYTER / NOTEBOOKS (optional)
+# -------------------------------------------------------------------
+.ipynb_checkpoints/
+*.ipynb
+
+# -------------------------------------------------------------------
+# IDEs
+# -------------------------------------------------------------------
+.idea/
