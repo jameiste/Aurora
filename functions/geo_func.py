@@ -2,16 +2,15 @@
 import requests
 import pandas as pd
 import numpy as np
-import json
 
 # Local Imports
 
-from environment.variables import TIME_THRESHOLD, LOC_LAT, LOC_LON
+from environment.variables import LOC_LAT, LOC_LON, REQUEST_TIMEOUT
 
 # Function: Request the data 
 def get_data():
     url = "https://services.swpc.noaa.gov/json/ovation_aurora_latest.json"
-    request = requests.get(url, timeout=30).json()
+    request = requests.get(url, timeout=REQUEST_TIMEOUT).json()
     data = pd.DataFrame(request)
     date_columns = ["Observation Time", "Forecast Time"]
     data[date_columns] = data[date_columns].apply(pd.to_datetime, errors="coerce", utc=True)

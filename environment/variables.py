@@ -7,9 +7,9 @@ load_dotenv()
 LOC_LAT = 59.3293
 LOC_LON = 18.0686 
 
-# --- Probability ---
-PROBABILITY = 0.3
-TIME_THRESHOLD = 7200
+# --- Threshold ---
+TIME_THRESHOLD = 3600
+REQUEST_TIMEOUT = 25
 
 # --- Notification
 KEY = os.getenv("API_KEY", "Fallback")
