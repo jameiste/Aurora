@@ -12,6 +12,7 @@ TIME_THRESHOLD = 3600
 REQUEST_TIMEOUT = 25
 
 # --- Notification
-KEY = os.getenv("API_KEY", "Fallback")
+NOTIFICATION_KEY = os.getenv("NOTIFICATION_API_KEY", "Fallback")
+WEATHER_KEY = os.getenv("WEATHER_API_KEY", "Fallback")
 ALERT = os.getenv("ALERT_NAME", "Fallback")
 DEVICE = os.getenv("DEVICE", None)
