@@ -1,26 +1,27 @@
 # Notification
 import pandas as pd
 import numpy as np
-import json
+from datetime import timedelta
 import requests
 
 # Local imports
 from environment.variables import NOTIFICATION_KEY, ALERT, DEVICE, LOC_LAT, LOC_LON
 from functions.score_validation import score_validation
 from functions.weather_conditions import get_weather_data
+from functions.bark_notification import send_bark_notification
 
 # Function: If data is received send it for notification
-def aurora_alert():
+def aurora_alert(notification: str = "pushcut"):
     
     # Get information
     send_message, data = score_validation()
     
     if send_message:
         score = np.mean(data["score"])
-        forecast_time = pd.to_datetime(data["Forecast Time"].iloc[0])
+        forecast_time = pd.to_datetime(data["Forecast Time"].iloc[0]) + timedelta(minutes=30)
         time = forecast_time.strftime("%H:%M")
         possible_wording_title = {1: "likely", 2: "very likely", 3: "visible"}
-        possible_wording_text = {1: "", 2: "likely", 3: "dramatically"}
+        possible_wording_text = {1: "", 2: "likely", 3: "dramatical"}
         if score >= 10:
             key = 3
         elif score >= 3:
@@ -40,8 +41,15 @@ def aurora_alert():
             cloud_message = f"Yeah, the visibilty with {visibility_km}km is good an only {cloud_message}% is low 🌉"
 
         title = f"🌌 Aurora Lights are {possible_wording_title.get(key)} ✨"
-        text = f"There is a {possible_wording_text.get(key)} chance of ({score:.2f}) at {time} of seeing Polar Lights \n" + cloud_message
-        pushcut_notify(title=title, text=text)
+        text = f"There is a {possible_wording_text.get(key)} chance of ({score:.2f}) of seeing Polar Lights for {time} \n" + cloud_message
+        
+        # Check which provider should be used
+        if notification == "pushcut":
+            pushcut_notify(title=title, text=text)
+        elif notification == "bark":
+            send_bark_notification(title=title, text=text)
+        else:
+            raise Exception("Choose a provider")
 
 # Function: Send the message
 def pushcut_notify(title: str, text: str, device: str | None = None):

@@ -9,7 +9,7 @@ async def run_once():
     print(f"Run at {datetime.datetime.now().isoformat()}", flush=True)
     # Error handling
     try:
-        await asyncio.wait_for(asyncio.to_thread(aurora_alert), timeout=REQUEST_TIMEOUT + 5)
+        await asyncio.wait_for(asyncio.to_thread(aurora_alert(notification="bark")), timeout=REQUEST_TIMEOUT + 5)
         print("Run finished", flush=True)
     except Exception as e:
         print(f"Run error: {e}", flush=True)
